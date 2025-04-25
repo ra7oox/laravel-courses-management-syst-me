@@ -5,6 +5,11 @@ use App\Http\Controllers\ClasseController;
 use App\Http\Controllers\EtudiantController;
 use App\Http\Controllers\FormationController;
 use App\Http\Controllers\ProfileController;
+use App\Models\Avis;
+use App\Models\Classe;
+use App\Models\Etudiant;
+use App\Models\Formation;
+use Database\Seeders\AvisSeeder;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
@@ -13,7 +18,13 @@ Route::get('/', function () {
 
 Route::redirect("/","/login");
 Route::get('/dashboard', function () {
-    return view('master');
+
+     return view('master', [
+        'formationsCount' => Formation::count(),
+        'etudiantsCount' => Etudiant::count(),
+        'avisCount' => Avis::count(),
+        'classesCount' => Classe::count(),
+    ]);
 })->middleware(['auth', 'verified'])->name('dashboard');
 
 Route::middleware('auth')->group(function () {

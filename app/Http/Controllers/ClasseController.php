@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Avis;
 use App\Models\Classe;
+use App\Models\Etudiant;
 use App\Models\Formation;
 use Illuminate\Http\Request;
 
@@ -15,7 +17,10 @@ class ClasseController extends Controller
     {
         $classes=Classe::all();
 
-        return view("classes.classes",compact("classes"));
+        return view("classes.classes",[
+            'classes'=>$classes,
+          
+        ]);
     }
 
     /**
@@ -54,7 +59,11 @@ class ClasseController extends Controller
         $classe=Classe::findOrFail($id);
 
         $formation=$classe->formation;
-        return view("formations.formation_classe",compact("classe","formation"));
+        return view("formations.formation_classe",[
+            'classe'=>$classe,
+            'formation'=>$formation,
+            
+        ]);
     }
 
     /**

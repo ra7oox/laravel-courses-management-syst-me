@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Avis;
+use App\Models\Classe;
 use App\Models\Etudiant;
 use App\Models\Formation;
 use Illuminate\Http\Request;
@@ -15,7 +16,10 @@ class AvisController extends Controller
     public function index()
     {
         $avis=Avis::all();
-        return view("avis.avis",compact("avis"));
+        return view("avis.avis",[
+            'avis'=>$avis,
+           
+        ]);
     }
 
     /**
