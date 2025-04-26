@@ -17,7 +17,7 @@
                 <option value="">-- Sélectionner un étudiant --</option>
                 @foreach ($etudiants as $etudiant)
                     @if ($etudiant->nom==Auth::user()->name && $etudiant->prenom==Auth::user()->name  )
-                    <option value="{{ $etudiant->id }}">{{ $etudiant->nom }} {{ $etudiant->prenom }}</option>
+                    <option value="{{ Auth::user()->id }}">{{ $etudiant->nom }} {{ $etudiant->prenom }}</option>
                         
                     @endif
                 @endforeach

@@ -7,6 +7,7 @@ use App\Models\Classe;
 use App\Models\Etudiant;
 use App\Models\Formation;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class AvisController extends Controller
 {
@@ -80,5 +81,9 @@ class AvisController extends Controller
     public function destroy(Avis $avis)
     {
         //
+    }
+    public function mesAvis(){
+        $avis=Avis::where("id_E",Auth::user()->id)->get();
+        return view("avis.mes-avis",compact("avis"));
     }
 }

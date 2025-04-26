@@ -36,5 +36,5 @@ Route::resource("etudiants",EtudiantController::class);
 Route::resource("classes",ClasseController::class);
 Route::resource("formations",FormationController::class);
 Route::resource("avis",AvisController::class);
-
+Route::get("/mes-avis",[AvisController::class,"mesAvis"])->name("mes-avis");
 require __DIR__.'/auth.php';
